@@ -116,11 +116,13 @@
       tempfile:
         state: file
       register: httpd_ca_file
+      changed_when: false
 
     - name: add CA cert to httpd CA file
       copy:
         dest: "{{ httpd_ca_file.path }}"
         content: "{{ httpd_ca_cert }}"
+      changed_when: false
 
     - name: create java keystore for external ca
       java_cert:
@@ -141,6 +143,7 @@
       file:
         path: "{{ httpd_ca_file.path }}"
         state: absent
+      changed_when: false
   when: httpd_ca_cert is defined
 
 - name: configure websockets proxy
