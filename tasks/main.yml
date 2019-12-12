@@ -144,7 +144,7 @@
   when: httpd_ca_cert is defined
 
 - name: configure websockets proxy
-  copy:
+  template:
     src: ws_ssl.j2
     dest: "/etc/ovirt-engine/ovirt-websocket-proxy.conf.d/99-ssl.conf"
   notify: restart websocket proxy
