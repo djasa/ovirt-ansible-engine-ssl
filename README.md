@@ -1,4 +1,4 @@
-#set up SSL for oVirt engine
+# set up SSL for oVirt engine
 
 This role sets up TLS certificates for `httpd`, `ovirt-imageio-proxy` and `ovirt-websockets-proxy` on ovirt-engine machine:
 
@@ -10,11 +10,11 @@ Limitation: the role doesn't deal with different configurations for different vi
 
 Services are restarted when they are known on the system and enabled no matter if they are running or not.
 
-##Requirements
+## Requirements
 
 PEM-encoded key and certificate files have to be present in the system. Certificate of httpd certificate issuer or any CA up the chain has to be either in the system trustore or specified as a contents of optional `httpd_ca_cert` variable.
 
-##Role Variables
+## Role Variables
 
 | Name | Required | Description, Default |
 |------|----------|----------------------|
@@ -27,11 +27,11 @@ PEM-encoded key and certificate files have to be present in the system. Certific
 | `httpd_ssl_protocol` | Optional | Line specifying TLS protocols in `ssl.conf`. Default is unspecified for systems with `crypto-policies` package or TLS 1.2+ for systems without it<br>Default: UNDEF or `SSLProtocol all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1` |
 
 
-##Dependencies
+## Dependencies
 
 None.
 
-##Example Playbook
+## Example Playbook
 
 ```yaml
 ---
